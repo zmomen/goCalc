@@ -17,3 +17,17 @@
 
 #### Commits
 - Prefix with `[Setup]`, `[Feat]`, `[Bug]`, `[Test]`, `[Refact]`, etc.
+
+#### Install Go
+
+1. Install [Go package](https://golang.org/doc/install?download=go1.13.6.darwin-amd64.pkg)
+
+2. Restart shell
+
+#### Run a Go program
+
+1. Create a workspace `go` in `$HOME`
+
+2. `$ go build -o <EXEC_NAME>`
+
+3. `$ ./<EXEC_NAME>`
