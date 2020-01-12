@@ -6,11 +6,16 @@ import (
 	"os"
 )
 
+// Questions:
+//  - What type does the implicit
+//  assignment give to errX and Y?
+//
+//  - What is the idiomamtic way
+//  to handle conversion issues?
+
 // Calculator
 //   Set of method signatures
 //   for a calculator
-//   Each method returns a 64
-// 	 -bit, integer value
 
 type Arithmetic interface {
 	Add(x, y int) int
