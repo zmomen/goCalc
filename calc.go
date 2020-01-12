@@ -1,17 +1,25 @@
-package main
-
-import (
-	"fmt"
-	"strconv"
-	"os"
-)
-
 // Questions:
+//
 //  - What type does the implicit
 //  assignment give to errX and Y?
 //
 //  - What is the idiomamtic way
 //  to handle conversion issues?
+//
+//  - How do array literals and
+//  slices differ?
+//
+//  - How does append() work
+//  under-the-hood?
+
+package main
+
+import (
+	"fmt"
+	"strconv"
+	"bufio"
+	"os"
+)
 
 // Calculator
 //   Set of method signatures
@@ -43,17 +51,29 @@ func (calc Calculator) Div(x,y int) int {
 }
 
 func main() {
-	if (len(os.Args) <= 1) {
-		fmt.Println("Enter two values")
-	} else {
-		x, errX := strconv.Atoi(os.Args[1])
-		y, errY := strconv.Atoi(os.Args[2])
-		if errX == nil && errY == nil {
-			var calculator Arithmetic = Calculator{}
-			fmt.Println(calculator.Add(x, y))
-			fmt.Println(calculator.Sub(x, y))
-			fmt.Println(calculator.Mult(x, y))
-			fmt.Println(calculator.Div(x, y))
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter two numbers: ")
+
+	text, err := reader.ReadString('\n')
+	if (err != nil) {
+		fmt.Println("Error: ReadString failed")
+		return
+	}
+
+	var nums []int
+	var prev int = 0
+
+	for i, elem := range text {
+		if elem == ' ' || elem == '\n' {
+			num, err := strconv.Atoi(text[prev:i])
+			if (err != nil) {
+				fmt.Println("Error: String conversion")
+			}
+			nums = append(nums, num)
+			prev = i + 1
 		}
 	}
+
+	var calculator Arithmetic = Calculator{}
+	fmt.Println(calculator.Add(nums[0], nums[1]))
 }
