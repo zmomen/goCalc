@@ -20,7 +20,7 @@
 
 #### Install Go
 
-1. Install Go package from https://golang.org/doc/install?download=go1.13.6.darwin-amd64.pkg
+1. Install [Go package](https://golang.org/doc/install?download=go1.13.6.darwin-amd64.pkg)
 
 2. Restart shell
 
